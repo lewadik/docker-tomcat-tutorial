@@ -18,7 +18,7 @@ docker run -d -p 8085:8080 mywebapp'''
 
       }
       steps {
-        sh 'gradle --version'
+        sh 'curl http://sedr.xyz:8085/'
       }
     }
 
