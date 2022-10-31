@@ -1,5 +1,10 @@
 pipeline {
-  agent none
+  agent {
+    node {
+      label 'main'
+    }
+
+  }
   stages {
     stage('git') {
       agent {
