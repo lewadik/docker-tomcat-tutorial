@@ -1,4 +1,9 @@
 pipeline {
+environment {
+registry = "repository/docker-hosted/clionnew"
+registryCredential = 'nexus'
+dockerImage = 'dockerbuild'
+}
   agent {
     node {
       label 'main'
@@ -15,14 +20,15 @@ pipeline {
       }
       steps {
         git(url: 'https://github.com/lewadik/docker-tomcat-tutorial.git', poll: true)
+        sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=mywebapp --format="{{.ID}}"))'
         sh '''docker build -t mywebapp .
-        docker run -d -p 8085:8080 mywebapp'''
+docker run -d -p 8085:8080 mywebapp'''
       }
     }
-
     stage('clean') {
       agent any
       steps {
+        sleep(30)
         sh 'curl http://sedr.xyz:8085/'
         sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=mywebapp --format="{{.ID}}"))'
       }
@@ -34,8 +40,8 @@ pipeline {
         sh '''
         curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d chat_id=${CHAT_ID} -d text="Docker builded"
         '''
-        }    
-      }
-    }
-  }
+ }    
+}
+}
+}
 }
