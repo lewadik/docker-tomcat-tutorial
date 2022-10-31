@@ -15,5 +15,14 @@ docker run -d -p 8085:8080 mywebapp'''
       }
     }
 
+    stage('do') {
+      steps {
+        dockerNode(image: 'jenkins/agent') {
+          sh 'echo "123"'
+        }
+
+      }
+    }
+
   }
 }
