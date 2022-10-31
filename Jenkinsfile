@@ -16,18 +16,18 @@ docker run -d -p 8085:8080 mywebapp'''
           }
         }
 
-        stage('age') {
-          agent {
-            docker {
-              image 'jenkins/agent'
-            }
+      }
+    }
 
-          }
-          steps {
-            sh 'echo "Hello World"'
-          }
+    stage('in') {
+      agent {
+        docker {
+          image 'jenkins/agent'
         }
 
+      }
+      steps {
+        sh 'echo "hello World"'
       }
     }
 
