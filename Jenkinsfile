@@ -16,13 +16,13 @@ docker run -d -p 8085:8080 mywebapp'''
           }
         }
 
-        stage('agent') {
-          steps {
-            dockerNode(image: 'ubuntu:latest') {
-              sh 'curl http://0.0.0.0:8085/'
-            }
+      }
+    }
 
-          }
+    stage('node') {
+      steps {
+        dockerNode(image: 'jenkins/agent') {
+          sh 'curl http://0.0.0.0:8085/'
         }
 
       }
