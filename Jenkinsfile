@@ -13,10 +13,7 @@ pipeline {
           steps {
             sh '''docker build -t mywebapp .
 docker run -d -p 8085:8080 mywebapp'''
-            node(label: 'docker-slave') {
-              sh 'curl http://0.0.0.0:8085/'
-            }
-
+            dockerNode(image: 'jenkins/agent')
           }
         }
 
