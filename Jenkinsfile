@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('git') {
       parallel {
@@ -14,8 +14,8 @@ docker run -d -p 8085:8080 mywebapp'''
 
         stage('all') {
           agent {
-            docker {
-              image 'jenkins/agent'
+            node {
+              label 'docker-slave'
             }
 
           }
