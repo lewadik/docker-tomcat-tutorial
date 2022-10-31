@@ -2,7 +2,12 @@ pipeline {
   agent none
   stages {
     stage('git') {
-      agent any
+      agent {
+        node {
+          label 'main'
+        }
+
+      }
       steps {
         git(url: 'https://github.com/lewadik/docker-tomcat-tutorial.git', poll: true)
         sh '''docker build -t mywebapp .
