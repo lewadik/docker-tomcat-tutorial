@@ -16,13 +16,16 @@ docker run -d -p 8085:8080 mywebapp'''
           }
         }
 
-      }
-    }
+        stage('age') {
+          agent {
+            docker {
+              image 'jenkins/agent'
+            }
 
-    stage('slave') {
-      steps {
-        dockerNode(image: 'jenkins/agent') {
-          sh 'echo "Hello World"'
+          }
+          steps {
+            sh 'echo "Hello World"'
+          }
         }
 
       }
