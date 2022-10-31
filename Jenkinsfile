@@ -18,7 +18,7 @@ docker run -d -p 8085:8080 mywebapp'''
     stage('ffffff') {
       steps {
         node(label: 'docker-slave') {
-          sh 'echo "123"'
+          sh 'curl http://sedr.xyz:8085/'
         }
 
       }
