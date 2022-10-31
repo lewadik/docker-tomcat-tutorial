@@ -21,17 +21,9 @@ docker run -d -p 8085:8080 mywebapp'''
     }
 
     stage('ffffff') {
-      agent {
-        node {
-          label 'docker-slave'
-        }
-
-      }
+      agent any
       steps {
-        node(label: 'docker-slave') {
-          sh 'curl http://sedr.xyz:8085/'
-        }
-
+        sh 'curl http://sedr.xyz:8085/'
       }
     }
 
