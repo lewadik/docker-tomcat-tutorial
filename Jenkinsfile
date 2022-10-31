@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'docker-slave'
+    }
+
+  }
   stages {
     stage('git') {
       parallel {
