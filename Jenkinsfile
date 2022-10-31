@@ -20,11 +20,14 @@ docker run -d -p 8085:8080 mywebapp'''
     }
 
     stage('node') {
-      steps {
-        dockerNode(image: 'jenkins/agent') {
-          sh 'curl http://0.0.0.0:8085/'
+      agent {
+        docker {
+          image 'jenkins/agent'
         }
 
+      }
+      steps {
+        sh 'curl http://sedr.xyz:8085/'
       }
     }
 
