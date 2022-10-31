@@ -12,9 +12,11 @@ pipeline {
         stage('shell') {
           steps {
             sh '''docker build -t mywebapp .
-docker run -d -p 8085:8080 mywebapp
-curl http://0.0.0.0:8085/
-docker rm $(docker stop $(docker ps -a -q --filter ancestor=mywebapp --format="{{.ID}}"))'''
+docker run -d -p 8085:8080 mywebapp'''
+            node(label: 'docker-slave') {
+              sh 'curl http://0.0.0.0:8085/'
+            }
+
           }
         }
 
