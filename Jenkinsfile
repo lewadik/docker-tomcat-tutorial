@@ -22,7 +22,7 @@ docker run -d -p 8085:8080 mywebapp'''
     stage('in') {
       agent any
       steps {
-        sh 'echo "hello World"'
+        sh 'echo 123'
         dockerNode(image: 'jenkins/agent') {
           sh 'uname -a'
         }
