@@ -16,9 +16,9 @@ docker run -d -p 8085:8080 mywebapp'''
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
-            sh 'curl http://localhost:8085/'
+            sh 'curl http://0.0.0.0:8085/'
           }
         }
 
