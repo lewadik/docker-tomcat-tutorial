@@ -21,8 +21,8 @@ docker run -d -p 8085:8080 mywebapp'''
 
     stage('in') {
       agent {
-        docker {
-          image 'jenkins/agent'
+        node {
+          label 'docker-slave'
         }
 
       }
