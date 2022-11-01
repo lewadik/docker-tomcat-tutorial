@@ -1,0 +1,5 @@
+{
+    "groovyLint.format.useDocumentIndentSize": false,
+    "groovyLint.basic.verbose": true,
+    "groovyLint.debug.enable": true
+}
