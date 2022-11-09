@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'oracle'
-    }
-
-  }
+  agent none
   stages {
     stage('git') {
       agent {
