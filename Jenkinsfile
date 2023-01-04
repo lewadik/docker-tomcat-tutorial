@@ -18,7 +18,6 @@ pipeline {
     stage('clean') {
       agent any
       steps {
-        sh 'curl http://sedr.xyz:8085/'
         sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=mywebapp --format="{{.ID}}"))'
       }
     }
