@@ -7,13 +7,6 @@ pipeline {
       }
     }
 
-    stage('clean') {
-      agent any
-      steps {
-        sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=mywebapp --format="{{.ID}}"))'
-      }
-    }
-
     stage('Notify') {
       agent any
       steps {
