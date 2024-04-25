@@ -139,7 +139,7 @@ RUN set -eux; \
 ADD sample.war /usr/local/tomcat/webapps/
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/2.440.3/jenkins-war-2.440.3.war
 RUN curl -fsSL ${JENKINS_URL} -o /usr/local/tomcat/webapps/jenkins.war
-RUN export CATALINA_OPTS="-DJENKINS_HOME=/usr/local/tomcat/jhome/ -Xmx512m"
+ARG export CATALINA_OPTS="-DJENKINS_HOME=/usr/local/tomcat/jhome/ -Xmx512m"
 EXPOSE 8080
 
 # upstream eclipse-temurin-provided entrypoint script caused https://github.com/docker-library/tomcat/issues/77 to come back as https://github.com/docker-library/tomcat/issues/302; use "/entrypoint.sh" at your own risk
