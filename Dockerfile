@@ -1,9 +1,10 @@
 FROM eclipse-temurin:21-jdk-jammy
 
 ENV CATALINA_HOME /usr/local/tomcat
+ENV JENKINS_HOME /usr/local/tomcat/jhome
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
-RUN mkdir -p /usr/local/tomcat/jhome
+RUN mkdir -p "$JENKINS_HOME"
 WORKDIR $CATALINA_HOME
 
 # let "Tomcat Native" live somewhere isolated
@@ -142,5 +143,4 @@ EXPOSE 8080
 
 # upstream eclipse-temurin-provided entrypoint script caused https://github.com/docker-library/tomcat/issues/77 to come back as https://github.com/docker-library/tomcat/issues/302; use "/entrypoint.sh" at your own risk
 ENTRYPOINT []
-ARG CATALINA_OPTS="-DJENKINS_HOME=/usr/local/tomcat/jhome -Xmx512m"
 CMD ["catalina.sh", "run"]
