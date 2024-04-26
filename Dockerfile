@@ -144,4 +144,5 @@ EXPOSE 8080
 
 # upstream eclipse-temurin-provided entrypoint script caused https://github.com/docker-library/tomcat/issues/77 to come back as https://github.com/docker-library/tomcat/issues/302; use "/entrypoint.sh" at your own risk
 ENTRYPOINT []
-CMD ["catalina.sh", "run"]
+CMD java -jar /usr/local/tomcat/webapps/jenkins.war --httpPort=8080
+#CMD ["catalina.sh", "run"]
